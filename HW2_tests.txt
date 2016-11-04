@@ -1,0 +1,49 @@
+------------------Question 1--------------------
+
+> (upper "AB.C")
+"ABC"
+> (upper "AB.c")
+"ABC"
+> (upper "Non-alphabetic characters are removed.")
+"NONALPHABETICCHARACTERSAREREMOVED"
+> (upper "")
+""
+
+------------------Question 2--------------------
+
+> (ROT12 "abc")
+"MNO"
+> (ROT12 "x.y z")
+"JKL"
+> (ROT12 "Look up the ROT13 substitution cipher on Wikipedia.")
+"XAAWGBFTQDAFEGNEFUFGFUAZOUBTQDAZIUWUBQPUM"
+> (ROT12 "abcdefghijklmnopqrstuvwxyz123,./")
+"MNOPQRSTUVWXYZABCDEFGHIJKL"
+
+------------------Question 3--------------------
+
+> (pow_back 2 10)
+'(1024 512 256 128 64 32 16 8 4 2)
+> (pow_back 3 10)
+'(59049 19683 6561 2187 729 243 81 27 9 3)
+
+> (pow_num 2 10)
+'(2 4 8 16 32 64 128 256 512 1024)
+> (pow_num 3 10)
+'(3 9 27 81 243 729 2187 6561 19683 59049)
+
+------------------Question 4--------------------
+
+> (power2 2 3)
+'(4 16 256)
+> (power2 2 5)
+'(4 16 256 65536 4294967296)
+> (power2 3 5)
+'(9 81 6561 43046721 1853020188851841)
+
+> (remP2 2 3 3)
+'(1 1 1)
+> (remP2 3 5 2)
+'(1 1 1 1 1)
+> (remP2 9 3 7)
+'(4 2 4)
