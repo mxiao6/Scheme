@@ -47,7 +47,7 @@
 ;@param lst list of previous results
 ;@return list of first n power of a
 (define (powH a n lst)
-  (if (= n 1) ;base case
+  (if (= n 0) ;base case
       lst
       (powH a (- n 1) (cons (* a (first lst)) lst)))) ;n is used as a counter
 
@@ -56,21 +56,31 @@
 ;@param n integer power
 ;@return backward list of first n power of a
 (define (pow_back a n)
-  (powH a n (list a))) ;call helper function with initial value
+  (powH a n (list 1))) ;call helper function with initial value a^0 = 1
+
+;pow_num's helper function
+;@param a integer under
+;@param n integer power
+;@param prev the last term of lst
+;@param lst list of previous results
+(define (powH_append a n prev lst)
+  (if (= n 0)
+      lst
+      (powH_append a (- n 1) (* a prev) (append lst (list (* a prev))))))
 
 ;Question 3-2
 ;@param a integer under
 ;@param n integer power
 ;@return forward list of first n power of a
 (define (pow_num a n)
-  (reverse (pow_back a n))) ;just reverse the backward list
+  (powH_append a n 1 (list 1))) ;initial value a^0 = 1
 
 ;power2's helper function
 ;@param n first n values of i
 ;@param lst list of previous results
 ;@return list of the first n values of i in a^(2^i)
 (define (pow2H n lst)
-  (if (= n 1)
+  (if (= n 0)
       lst
       (pow2H (- n 1) (cons (expt (first lst) 2) lst)))) ;built-in exponentiation function
 
@@ -79,7 +89,7 @@
 ;@param n first n values of i
 ;@return list of the first n values of i in a^(2^i)
 (define (power2 a n)
-  (reverse (pow2H n (list (expt a 2)))))
+  (reverse (pow2H n (list a)))) ;initial value a^(2^0) = a
 
 ;Question 4-2
 ;@param a integer under

@@ -50,8 +50,13 @@
 (define (pow_back a n)
   (powH a n (list a)))
 
+(define (powH_append a n prev lst)
+  (if (= n 0)
+      lst
+      (powH_append a (- n 1) (* a prev) (append lst (list (* a prev))))))
+
 (define (pow_num a n)
-  (reverse (pow_back a n)))
+  (powH_append a n 1 (list 1)))
 
 (define (pow2H n lst)
   (if (= n 1)
